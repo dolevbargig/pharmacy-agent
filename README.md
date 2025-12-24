@@ -82,9 +82,7 @@ with the pharmacy database:
 5. Open the application in your browser:
    
    Frontend (Chat UI): http://localhost:3000
-   
-   Backend API: http://localhost:8000
-   
+   Backend API: http://localhost:8000  
    Health check endpoint: http://localhost:8000/health
 
 7. To stop the application, press Ctrl+C.
