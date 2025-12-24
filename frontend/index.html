@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- User Selection Screen -->
+    <div class="user-selection-screen" id="userSelectionScreen">
+        <div class="user-selection-container">
+            <div class="user-selection-header">
+                <h1>🏥 Pharmacy AI Assistant</h1>
+                <h2>Welcome to the Pharmacy System</h2>
+                <p class="subtitle">AI-powered medication information and prescription management</p>
+            </div>
+
+            <div class="user-selection-content">
+                <h3>👤 Please Select Your Identity</h3>
+                <p class="selection-instruction">Choose your profile to continue</p>
+
+                <div class="users-grid" id="usersGrid">
+                    <!-- Users will be loaded here dynamically -->
+                    <div class="loading">Loading users...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Container (Hidden Initially) -->
+    <div class="container" id="mainContainer" style="display: none;">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>🏥 Pharmacy AI Assistant</h1>
+                    <p class="subtitle">Medication Information & Prescription Management</p>
+                </div>
+                <div class="user-info" id="userInfo">
+                    <span class="current-user">👤 <span id="currentUserName"></span></span>
+                    <button class="change-user-btn" id="changeUserBtn">Change User</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <!-- Welcome message will be added dynamically -->
+            </div>
+
+            <div class="input-container">
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask me anything! Check medications, prescriptions, stock and more..."
+                    autocomplete="off"
+                >
+                <button id="sendButton">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

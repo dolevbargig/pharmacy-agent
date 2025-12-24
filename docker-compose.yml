@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  pharmacy-agent:
+    build: .
+    container_name: pharmacy-ai-agent
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./database:/app/database
+      - ./frontend:/app/frontend:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  # Optional: Simple HTTP server for frontend
+  frontend:
+    image: nginx:alpine
+    container_name: pharmacy-frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - pharmacy-agent
+    restart: unless-stopped
+
+networks:
+  default:
+    name: pharmacy-network
